@@ -1,0 +1,4 @@
+.env
+baseline.json
+*_results.json
+__pycache__/

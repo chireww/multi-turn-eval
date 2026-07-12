@@ -1,0 +1,937 @@
+[
+  {
+    "scenario_id": "MC001",
+    "scenario_name": "指代消解——代词追踪",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "替雷利珠单抗药品的不良反应有哪些？",
+        "answer_preview": "<think>\n我们根据知识库内容来回答。知识库中没有提到替雷利珠单抗的不良反应。知识库只讲述了该患者的治疗过程和效果，没有列出不良反应。因此，根据严格依据知识库的原则，无法回答此问题。\n</think>根据提供的知识库内容，**并未提及替",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.14,
+            "passed": false,
+            "reason": "The score is 0.14 because the actual output entirely avoids providing any adverse reaction information for tislelizumab — the sole focus of the query — and instead offers only irrelevant details about efficacy, treatment course, stability, and survival, or explicitly admits absence of safety data without attempting to answer the question."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 2,
+        "user_message": "它的发生率是多少？",
+        "answer_preview": "<think>\n我们注意到用户的问题“它的发生率是多少？”可能是在追问替雷利珠单抗的不良反应发生率。然而，根据提供的知识库内容，完全没有提及替雷利珠单抗的任何不良反应及其发生率。知识库仅包含勃起功能障碍（ED）的流行病学数据，与替雷利珠单抗",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.2,
+            "passed": false,
+            "reason": "The score is 0.20 because the output fails to provide the requested incidence rate for tislelizumab’s adverse reactions and instead introduces entirely irrelevant epidemiological data about erectile dysfunction (ED) — including its overall, mild, moderate, and severe prevalence — which has no connection to the input question. Additionally, the output includes unhelpful meta-comments about knowledge base limitations and negative assertions without delivering the required numerical rate, making nearly all content off-topic and unresponsive."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 3,
+        "user_message": "这个数据可靠吗？",
+        "answer_preview": "<think>\n我们根据知识库内容回答。知识库中只有ED的患病率数据，没有替雷利珠单抗的不良反应数据。用户问“这个数据可靠吗？”指的是之前提到的ED患病率数据？还是指替雷利珠单抗的不良反应发生率？根据对话历史，用户先问替雷利珠单抗的不良反应",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 0.6,
+            "passed": false,
+            "reason": "The score is 0.60 because the actual output incorrectly attributes clinical trial data for erectile dysfunction to tislelizumab—a drug not named or implied in the retrieval context and which is, in reality, an oncology anti-PD-1 antibody—not indicated for ED—and falsely asserts the context 'lacks content' about tislelizumab’s adverse reactions, despite the context being entirely silent on tislelizumab altogether."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.62,
+            "passed": false,
+            "reason": "The score is 0.62 because the response incorrectly shifts focus to tislelizumab—a drug wholly unrelated to erectile dysfunction—introducing three distinct irrelevant statements about its adverse reactions, epidemiological irrelevance, and meta-reliability, none of which address the reliability of the ED prevalence data referenced in the input; however, the score isn't lower because the response at least attempts to engage with the concept of data reliability, albeit misdirected."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.64,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        },
+        {
+          "from_turn": 2,
+          "to_turn": 3,
+          "prev_answer_overlap": 0.76,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "胃癌",
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 3,
+          "detected_topics": [
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC002",
+    "scenario_name": "上下文延续——需要跨轮记忆",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "胃癌怎么治疗？",
+        "answer_preview": "<think>\n我们根据知识库内容回答用户问题。知识库中详细描述了一位局部进展期胃癌患者的治疗方案，即“三明治”式综合治疗：新辅助治疗（替雷利珠单抗联合化疗）→手术→术后辅助治疗（替雷利珠单抗联合化疗）→维持治疗（替雷利珠单抗单药）。用户问",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response directly and comprehensively addresses the question about gastric cancer treatment without including any irrelevant information."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 0.0,
+            "violations": [
+              "根治"
+            ]
+          }
+        ]
+      },
+      {
+        "turn": 2,
+        "user_message": "刚才提到的方案里，首选的是什么？",
+        "answer_preview": "<think>\n我们根据知识库内容回答。知识库中提到了T2DM（2型糖尿病）的治疗方案，其中王建平教授指出SGLT2i联合二甲双胍的固定复方制剂（FDC）是T2DM治疗优选方案。但用户问的是“胃癌怎么治疗？”之后又问“刚才提到的方案里，首选",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.71,
+            "passed": true,
+            "reason": "The score is 0.71 because the response correctly identifies that the input asks for the 'first choice' within the previously mentioned plan, but it incorrectly pivots to a meta-discussion about whether 'preferred' is explicitly labeled in the knowledge base—rather than directly naming preoperative therapy as the de facto first and initiating step of the 'sandwich' sequence. While it avoids major factual errors and stays broadly within the topic, the two irrelevant statements undermine precision and directness, preventing a higher score."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 0.0,
+            "violations": [
+              "根治"
+            ]
+          }
+        ]
+      },
+      {
+        "turn": 3,
+        "user_message": "首选方案有什么副作用？",
+        "answer_preview": "<think>\n根据知识库内容，我无法直接回答这个问题，因为知识库中没有提到任何关于治疗方案副作用的信息。知识库只描述了治疗方案的具体步骤和效果，没有涉及副作用。因此，我需要基于知识库的局限性来回答。\n</think>根据您提供的知识库内容",
+        "single_turn_metrics": []
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.57,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        },
+        {
+          "from_turn": 2,
+          "to_turn": 3,
+          "prev_answer_overlap": 0.55,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "胃癌"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "胃癌"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 3,
+          "detected_topics": [
+            "胃癌",
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC003",
+    "scenario_name": "话题切换——不污染上下文",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "胃癌的治疗方案有哪些？",
+        "answer_preview": "<think>\n我们根据知识库内容回答用户问题。知识库中详细描述了一位局部进展期胃癌患者的治疗方案，即“三明治”式综合治疗：新辅助治疗（替雷利珠单抗联合化疗）→手术→术后辅助治疗及维持治疗。用户问“胃癌的治疗方案有哪些”，但知识库只针对这一",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 0.91,
+            "passed": true,
+            "reason": "The score is 0.91 because the actual output claims the purpose of neoadjuvant treatment was 'to shrink the tumor to enable surgery', but the retrieval context only describes the clinical sequence (diagnosis indicating direct surgery was difficult → neoadjuvant therapy → PR → successful surgery) and never explicitly states that *shrinking the tumor* was the intended *purpose*—it implies feasibility and curative intent, but the specific causal phrasing goes beyond direct textual support."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response fully and precisely addresses the input question about gastric cancer treatment options, with no irrelevant content—everything provided is directly relevant, accurate, and focused on evidence-based therapeutic approaches."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 0.0,
+            "violations": [
+              "根治"
+            ]
+          }
+        ]
+      },
+      {
+        "turn": 2,
+        "user_message": "手术后的护理注意事项是什么？",
+        "answer_preview": "<think>\n根据知识库内容，该病例中患者接受了腹腔镜下远端胃癌根治术，但知识库中并未提供具体的术后护理注意事项。因此，我需要严格基于知识库回答，不能添加额外信息。知识库中只提到了术后辅助治疗（替雷利珠单抗联合CAPOX方案及维持治疗），",
+        "single_turn_metrics": []
+      },
+      {
+        "turn": 3,
+        "user_message": "实验室怎么进入？",
+        "answer_preview": "<think>\n我们注意到用户的问题\"实验室怎么进入？\"与当前对话背景（胃癌治疗方案和术后护理）无关。知识库中也没有关于实验室进入的任何内容。因此，根据角色设定，必须严格基于知识库回答。由于知识库中没有相关信息，应该告知用户无法回答。\n</",
+        "single_turn_metrics": []
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.5,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        },
+        {
+          "from_turn": 2,
+          "to_turn": 3,
+          "prev_answer_overlap": 0.4,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "胃癌"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "胃癌"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 3,
+          "detected_topics": [
+            "胃癌",
+            "实验室"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC004",
+    "scenario_name": "用户纠错——系统认错并修正",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "妥诺达非药的用法用量是什么？",
+        "answer_preview": "<think>\n我们根据知识库内容回答。知识库中Q1明确回答了盐酸妥诺达非片的用法用量。推荐起始剂量50mg，性生活前0.5-2小时口服，可增至100mg，每天一次。特殊人群：轻度肝功能不全最大50mg，中度肾功能不全推荐50mg。需性刺激",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 0.0,
+            "passed": false,
+            "reason": "The score is 0.00 because the actual output repeatedly and consistently misnames 'Salt hydrochloride tonodafin tablets' as 'salt acid tadalafil tablets' across all claims — contradicting the retrieval context’s explicit, uniform identification of the drug as 'tonodafin', a domestically developed ED drug distinct from tadalafil; every factual statement (dosing, food interaction, hepatic/renal adjustments, mechanism) is undermined by this fundamental misidentification."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.89,
+            "passed": true,
+            "reason": "The score is 0.89 because the response correctly addresses '用法用量' (usage and dosage) for Tadalafil but includes one irrelevant detail about pharmacological requirements (needing sexual stimulation for efficacy), which distracts from the core dosage instructions without undermining overall relevance."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 2,
+        "user_message": "不对，我问的是妥诺达非对老年人的用量",
+        "answer_preview": "<think>\n好的，用户纠正了，他之前问的是“妥诺达非药的用法用量”，现在明确问的是“对老年人的用量”。看来他可能是一位患者或者患者的家属，正在为家里的老人咨询用药问题。深层需求是担心老年人用药的安全性和剂量调整，因为老年人身体机能下降，",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response directly and precisely addresses the query about tadalafil dosage for elderly patients, with no irrelevant content—exactly what was asked!"
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.55,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC005",
+    "scenario_name": "空召回后的追问——兜底后不瞎编",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "今天天气怎么样？",
+        "answer_preview": "<think>\n我们根据知识库内容回答用户问题。知识库中没有关于天气的信息，所以无法回答。\n</think>抱歉，根据知识库内容，我无法回答关于天气的问题。请提供更多与知识库相关的问题。",
+        "single_turn_metrics": []
+      },
+      {
+        "turn": 2,
+        "user_message": "那明天呢？",
+        "answer_preview": "<think>\n我们根据知识库内容，无法回答天气问题，用户继续问明天天气，同样无法回答。需要坚持基于知识库。\n</think>抱歉，根据知识库内容，我无法回答关于明天天气的问题。请提出与知识库相关的问题。",
+        "single_turn_metrics": []
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.8,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "天气"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "天气"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC006",
+    "scenario_name": "空召回后的追问——兜底后不瞎编",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "今天天气怎么样？",
+        "answer_preview": "<think>\n我们根据知识库内容回答用户问题。知识库中没有关于天气的信息，所以无法回答。\n</think>抱歉，根据我的知识库内容，我无法回答关于今天天气的问题。请提供更具体的信息或查询相关天气服务。",
+        "single_turn_metrics": []
+      },
+      {
+        "turn": 2,
+        "user_message": "那明天呢？",
+        "answer_preview": "<think>\n我们根据知识库内容，只能回答与知识库相关的问题。用户问“明天呢？”指的是明天的天气，同样不在知识库范围内。因此应该继续表示无法回答。\n</think>抱歉，我的知识库中没有关于明天天气的信息。请参考天气预报或相关气象服务获取",
+        "single_turn_metrics": []
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.82,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "天气"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "天气"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC007",
+    "scenario_name": "多跳推理——跨文档关联追问",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "妥诺达非是什么药？",
+        "answer_preview": "<think>\n我们根据知识库内容回答。知识库中明确提到：\"妥诺达非是国产原研治疗男性ED的药物。\" 所以回答：妥诺达非是一种国产原研治疗男性勃起功能障碍（ED）的药物。\n</think>根据知识库内容，妥诺达非是一种**国产原研治疗男性E",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response directly and accurately addresses the input question about '妥诺达非' (tadalafil), with no irrelevant content—everything provided is pertinent to its identity, use, mechanism, or clinical context."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 2,
+        "user_message": "它有什么副作用？",
+        "answer_preview": "<think>\n好的，用户问的是“它有什么副作用？”，这里的“它”显然指的是前面提到的“妥诺达非”。用户可能是在了解了这个药是治疗ED的之后，想进一步知道用药的安全性，特别是担心会不会有不良反应。\n\n嗯，我需要严格根据知识库内容来回答。知识",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 0.91,
+            "passed": true,
+            "reason": "The score is 0.91 because the actual output incorrectly generalizes safety findings to 'all clinical trials', while the retrieval context explicitly limits the statement to 'randomized double-blind placebo-controlled trials', omitting the crucial trial design qualifier."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.47,
+            "passed": false,
+            "reason": "The score is 0.47 because the response completely avoids listing or describing any specific side effects—instead, it offers vague safety assurances, general usage advice, and recommendations to consult a doctor, none of which directly answer 'What are its side effects?' While it acknowledges the drug has adverse reactions (e.g., referencing 'same-target drugs' and 'safety profile'), it fails to name even one concrete symptom or effect, making the output largely uninformative for the user's explicit question."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 3,
+        "user_message": "刚才提到的副作用里，哪个最严重？",
+        "answer_preview": "<think>\n我们根据知识库内容，提到副作用有头晕、潮红等，且说这些副作用通常是轻微的，发生率低于同靶点产品，未提示有特殊安全性问题。所以知识库中没有明确指出哪个最严重，只是说常见不良反应如头晕、潮红，且轻微。因此回答应基于知识库：没有提",
+        "single_turn_metrics": []
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.77,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        },
+        {
+          "from_turn": 2,
+          "to_turn": 3,
+          "prev_answer_overlap": 0.46,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 3,
+          "detected_topics": [
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC008",
+    "scenario_name": "歧义澄清——问题模糊时追问而非瞎猜",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "那个药怎么用？",
+        "answer_preview": "<think>\n我们根据知识库内容回答。知识库中Q1是关于“如何正确服用盐酸妥诺达非片？”的。所以直接引用知识库内容。\n</think>根据知识库内容，盐酸妥诺达非片的正确服用方法如下：\n\n- **推荐剂量**：对于大多数患者，按需服用的推",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response directly and fully addresses the question about how to use the medication, with no irrelevant content—clear, concise, and perfectly on point!"
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 2,
+        "user_message": "就是胃癌术前用的免疫药",
+        "answer_preview": "<think>\n好的，用户问的是“就是胃癌术前用的免疫药”，结合之前的对话历史，我之前回答过“那个药怎么用？”这个问题，当时我根据知识库回答的是关于“盐酸妥诺达非片”的用法。现在用户明确说“就是胃癌术前用的免疫药”，说明用户可能觉得我上次回",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.43,
+            "passed": false,
+            "reason": "The score is 0.43 because the actual output focused heavily on dosing, administration logistics, generic advice, and package insert references—none of which directly identify or characterize the specific immunotherapy drug used preoperatively for gastric cancer; while some immunotherapy context may be present, the core query remains unanswered with precision or relevance."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.59,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "胃癌",
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  },
+  {
+    "scenario_id": "MC009",
+    "scenario_name": "长对话记忆——5轮内信息不丢失",
+    "turns": [
+      {
+        "turn": 1,
+        "user_message": "我有个局部进展期胃癌的患者",
+        "answer_preview": "<think>\n我们根据知识库内容来回答。用户提到“我有个局部进展期胃癌的患者”，这可能是想询问治疗方案或预后。知识库中详细描述了一位局部进展期胃窦腺癌（cT3N2M0，III期）患者的治疗过程，采用了“三明治”式综合治疗：新辅助免疫联合化",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response directly and precisely addresses the input — a patient with locally advanced gastric cancer — without any irrelevant content, tangents, or extraneous information."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 0.0,
+            "violations": [
+              "根治"
+            ]
+          }
+        ]
+      },
+      {
+        "turn": 2,
+        "user_message": "可以用免疫治疗吗？",
+        "answer_preview": "<think>\n好的，用户问“可以用免疫治疗吗？”，这个问题是接着我之前关于局部进展期胃癌的回答来的。用户可能是一位医生或者患者家属，正在为一位局部进展期胃癌患者寻求治疗方案。\n\n嗯，用户的核心需求很明确，就是想知道免疫治疗是否适用。但深层",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 0.83,
+            "passed": true,
+            "reason": "The score is 0.83 because the actual output incorrectly states the maintenance tislelizumab monotherapy lasted 'nearly 1 year', while the retrieval context specifies it lasted 'over 30 months' (i.e., >2.5 years), a significant factual discrepancy in duration."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response directly and exclusively addresses the question about immunotherapy eligibility—no irrelevant content is present, and the answer stays precisely on topic with clarity and focus."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 3,
+        "user_message": "具体用什么方案？",
+        "answer_preview": "<think>\n好的，用户问的是“具体用什么方案？”。结合之前的对话来看，用户之前提到“我有个局部进展期胃癌的患者”，然后我根据知识库内容回复了可以用免疫治疗，并且提到了替雷利珠单抗联合化疗的“三明治”策略。现在用户追问具体方案，说明他需要",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 0.17,
+            "passed": false,
+            "reason": "The score is 0.17 because the actual output fundamentally misrepresents the patient's diagnosis (claiming gastric cancer instead of lung squamous cell carcinoma), invents a non-existent 'sandwich' regimen with CAPOX (which is never mentioned and contraindicated for this cancer type), falsely asserts surgery was performed (when the patient refused), fabricates postoperative pathology and pCR, misattributes partial response to gastric neoadjuvant therapy, and imposes an incorrect three-phase treatment timeline—while the context clearly describes only a two-phase immune-chemotherapy regimen followed by tislelizumab monotherapy maintenance, with no surgery or CAPOX involvement."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the response directly and precisely addresses the input question '具体用什么方案？' without any irrelevant content — it stays fully focused on proposing or specifying a concrete solution."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 0.0,
+            "violations": [
+              "根治"
+            ]
+          }
+        ]
+      },
+      {
+        "turn": 4,
+        "user_message": "这个方案的副作用大吗？",
+        "answer_preview": "<think>\n我们根据知识库内容回答。知识库中主要介绍了盐酸妥诺达非片的副作用，并没有直接提及替雷利珠单抗联合CAPOX方案的副作用。但用户问的是“这个方案”，即前面讨论的局部进展期胃癌的免疫联合化疗方案。知识库中没有相关副作用信息，因此",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 1.0,
+            "passed": true,
+            "reason": "The score is 1.00 because the actual output perfectly aligns with the retrieval context—no contradictions were found."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.78,
+            "passed": true,
+            "reason": "The score is 0.78 because the response correctly addresses the side effects of the tislelizumab + CAPOX regimen but unnecessarily includes irrelevant details about tadalafil hydrochloride—its indications and unrelated background—which dilutes focus and reduces precision. While the core answer is relevant and informative, these off-topic statements prevent a higher score."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      },
+      {
+        "turn": 5,
+        "user_message": "那还是换一种吧，有没有副作用小一点的？",
+        "answer_preview": "<think>\n好的，用户问能不能换一种副作用小一点的方案。看来用户对之前提到的替雷利珠单抗联合CAPOX方案的副作用比较担心，想找一个更温和的选择。\n\n嗯，我得仔细看看知识库。知识库里主要讲的是局部进展期胃癌的围手术期治疗，明确推荐了替雷",
+        "single_turn_metrics": [
+          {
+            "metric": "FaithfulnessMetric",
+            "score": 0.8,
+            "passed": true,
+            "reason": "The score is 0.80 because the actual output incorrectly states that the knowledge base does not compare side effect profiles of different treatment regimens, while the retrieval context explicitly compares tadalafil and sildenafil’s side effects—such as headache, flushing, and nasal congestion—with clear statements about lower incidence rates for tadalafil."
+          },
+          {
+            "metric": "AnswerRelevancyMetric",
+            "score": 0.93,
+            "passed": true,
+            "reason": "The score is 0.93 because the response correctly focuses on treatment alternatives with milder side effects as requested, but briefly mentions pCR (pathological complete response) — an efficacy metric unrelated to the user’s explicit concern about minimizing side effects — slightly diluting relevance."
+          },
+          {
+            "metric": "HallucinationCheck",
+            "score": 1.0,
+            "findings": []
+          },
+          {
+            "metric": "ComplianceCheck",
+            "score": 1.0,
+            "violations": []
+          }
+        ]
+      }
+    ],
+    "cross_turn_checks": {
+      "context_memory": [
+        {
+          "from_turn": 1,
+          "to_turn": 2,
+          "prev_answer_overlap": 0.77,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        },
+        {
+          "from_turn": 2,
+          "to_turn": 3,
+          "prev_answer_overlap": 0.79,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        },
+        {
+          "from_turn": 3,
+          "to_turn": 4,
+          "prev_answer_overlap": 0.38,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        },
+        {
+          "from_turn": 4,
+          "to_turn": 5,
+          "prev_answer_overlap": 0.85,
+          "note": "关键词重叠率（仅参考，需人工确认语义关联）"
+        }
+      ],
+      "topic_isolation": [
+        {
+          "turn": 1,
+          "detected_topics": [
+            "胃癌"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 2,
+          "detected_topics": [
+            "胃癌"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 3,
+          "detected_topics": [
+            "胃癌",
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 4,
+          "detected_topics": [
+            "胃癌",
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        },
+        {
+          "turn": 5,
+          "detected_topics": [
+            "胃癌",
+            "药品"
+          ],
+          "note": "人工确认这些话题是否应该出现在此轮回答中"
+        }
+      ]
+    }
+  }
+]
